@@ -1,0 +1,27 @@
+# Menset versi docker-compose
+version: '3.7'
+  # Menspesifikasikan service
+services:
+  # Service bernama item-app
+  item-app:
+    # Menspesifikasikan image yang akan dipakai
+    image: peterajaaa/item-app:v1
+      # Menset port yang akan digunakan
+    ports:
+      - "80:8080"
+        # Menset container item-app untuk berjalan sesudah container item-db
+    depends_on:
+      - "item-db"
+        # Menset agar container selalu restart ketika dimatikan
+    restart: always
+  # Service bernama item-db
+  item-db:
+    # Menspesifikasikan image yang akan dipakai
+    image: mongo:3
+      # Menambah volume ke container ini
+    volumes:
+      # Menset nama volume jadi app-db yang letaknya ada di /data/db
+      - app-db:/data/db
+        # Menspesifikasikan volume
+volumes:
+  app-db:
