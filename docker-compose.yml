@@ -18,7 +18,7 @@ services:
   item-db:
     # Menspesifikasikan image yang akan dipakai
     image: mongo:3
-      # Menambah volume ke container ini
+    # Menambah volume ke container ini
     volumes:
       # Menset nama volume jadi app-db yang letaknya ada di /data/db
       - app-db:/data/db
